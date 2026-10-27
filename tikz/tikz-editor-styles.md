@@ -38,7 +38,7 @@ The parser of the editor also reads the name `edge` inside a coordinate as the p
 A coordinate for the border of a figure is named `rim` instead.
 
 The figures of the ai-workspace use the calc fraction, as [the item on placement](box-and-wire-placement.md) says, and `convert-perpendicular-ports.py` of the `tikz-figures` skill rewrites the bare pairs of a figure into it.
-The tool `human-tools/check-tikz-editor-diagnostics.mjs` runs the core package of a local clone of the editor on a figure and lists the diagnostics, so that a figure is checked without opening the editor.
+The script `check-tikz-editor-diagnostics.mjs` of the `tikz-figures` skill of the ai-workspace runs the core package of a local clone of the editor on a figure and lists the diagnostics, so that a figure is checked without opening the editor.
 Run on its own, the core package of version 0.6.0 applies a `\tikzset` inside the picture and not the style block before it, and the tool reports the style names it did not resolve on one line.
 The application resolved the block before the picture in the round trip of 2026-09-14 with version 0.5.2.
 
