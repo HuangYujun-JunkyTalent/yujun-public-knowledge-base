@@ -1,0 +1,29 @@
+# CommonMark marks up emphasis, code, headings, thematic breaks, lists, quotations, links, images, line breaks and raw HTML
+
+The CommonMark specification 0.31.2 defines thematic breaks, headings, code blocks, HTML blocks, link reference definitions, paragraphs, quotations and lists as blocks.
+It defines code spans, emphasis, links, images, autolinks, raw HTML and line breaks as inlines.
+The table gives the form of each construct.
+In the column Source, "spec" links the section that states the form, and "pandoc" marks a form whose rendering was measured with `pandoc -f commonmark`, which switches on no extension by default other than `raw_html`.
+
+| Construct | CommonMark form | Source |
+|---|---|---|
+| emphasis | `*text*` or `_text_`. An `*` opens and closes emphasis inside a word as well, and an `_` only at the edge of a word, so `snake_case_x` stays one word. | [spec](https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis), pandoc |
+| strong emphasis | `**text**` or `__text__`. | [spec](https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis) |
+| monospace or inline code | `` `code` ``. A run of backticks is closed only by a run of the same length, so ``` ``co`de`` ``` holds a backtick. Every character inside a code span is literal. | [spec](https://spec.commonmark.org/0.31.2/#code-spans), pandoc |
+| section heading | One to six `#` and a space before the text, or a line of `=` or `-` under the text for the first two levels. The depth is in [Markdown headings stop at six levels](markdown-heading-depth.md). | [spec](https://spec.commonmark.org/0.31.2/#atx-headings), [spec](https://spec.commonmark.org/0.31.2/#setext-headings) |
+| thematic break | A line of three or more `-`, `*` or `_`, rendered as an `<hr>` element. A line of `-` right under a paragraph makes the paragraph a heading instead. | [spec](https://spec.commonmark.org/0.31.2/#thematic-breaks), pandoc |
+| bulleted list | Lines that start with `-`, `+` or `*` and a space. A change of the bullet character starts a new list. | [spec](https://spec.commonmark.org/0.31.2/#lists), pandoc |
+| numbered list | Lines that start with a number and `.` or `)`. A change from `.` to `)` starts a new list. The first number sets the start, and the later numbers are ignored, so `1.` on every line counts 1, 2, 3. A numbered list can follow a paragraph without a blank line only when its first number is 1, and a line `2. a` right after a paragraph joins the paragraph. | [spec](https://spec.commonmark.org/0.31.2/#lists), pandoc |
+| block quotation | `>` at the start of each line. | [spec](https://spec.commonmark.org/0.31.2/#block-quotes) |
+| verbatim or code block | A fence of three backticks or three tildes with an optional language such as `python`, or an indent of four spaces. | [spec](https://spec.commonmark.org/0.31.2/#fenced-code-blocks), [spec](https://spec.commonmark.org/0.31.2/#indented-code-blocks) |
+| hyperlink | `[text](https://example.org "title")`, or `[text][label]`, `[label][]` or `[label]` with `[label]: https://example.org` on a line of its own, or `<https://example.org>` and `<name@example.org>`. | [spec](https://spec.commonmark.org/0.31.2/#links), [spec](https://spec.commonmark.org/0.31.2/#autolinks), pandoc |
+| image or figure | `![alt text](image.png "title")`, rendered as an `<img>` element with the alt text and the title. | [spec](https://spec.commonmark.org/0.31.2/#images), pandoc |
+| comment | `<!-- text -->`, an HTML block copied into the HTML output, where a browser hides it. | [spec](https://spec.commonmark.org/0.31.2/#html-blocks), pandoc |
+| line break | Two or more spaces or a backslash at the end of the line. | [spec](https://spec.commonmark.org/0.31.2/#hard-line-breaks), pandoc |
+| non-breaking space | The character U+00A0, or the entity `&nbsp;` or `&#160;`. | [spec](https://spec.commonmark.org/0.31.2/#entity-and-numeric-character-references), pandoc |
+| dashes and typographic quotes | The characters `–`, `—`, `“` and `”`, or the entities `&ndash;`, `&mdash;`, `&ldquo;` and `&rdquo;`. | [spec](https://spec.commonmark.org/0.31.2/#entity-and-numeric-character-references), pandoc |
+| backslash escape | A backslash before an ASCII punctuation character makes that character literal, and the backslash disappears, so `\(x^2\)` renders as the text `(x^2)`. A backslash before any other character, a letter for example, stays as it is, so `\emph{x}` renders as its own source text. Escapes apply outside code spans, code blocks, autolinks and raw HTML. | [spec](https://spec.commonmark.org/0.31.2/#backslash-escapes), pandoc |
+| raw HTML | An HTML tag inline, or an HTML block that starts a line, is copied unchanged into the HTML output. A raw `<a id="sec-a"></a>` and a link `[text](#sec-a)` give a link to a place in the page. | [spec](https://spec.commonmark.org/0.31.2/#raw-html), [spec](https://spec.commonmark.org/0.31.2/#html-blocks), pandoc |
+
+Source: [CommonMark specification 0.31.2](https://spec.commonmark.org/0.31.2/), sections linked in the table, read 2026-09-30, and pandoc 3.5 with `pandoc -f commonmark -t html`, run on the same day for the rows marked "pandoc".
+Related: [GitHub renders Markdown files as CommonMark with tables, task lists, mathematics, footnotes, alerts and diagrams added](github.md), [The VS Code Markdown preview renders CommonMark with tables, strikethrough, KaTeX mathematics, Mermaid diagrams and front matter](vscode-preview.md), [Pandoc Markdown is a dialect with a parser of its own that adds mathematics, raw LaTeX and citations and writes each construct in its LaTeX form](pandoc.md), [Markdown headings stop at six levels](markdown-heading-depth.md), [GitHub, the VS Code preview and pandoc render dollar mathematics, pipe tables, strikethrough and links to headings alike](common-markdown.md).
