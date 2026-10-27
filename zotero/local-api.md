@@ -11,8 +11,8 @@ The local API answers a request with 403 while the setting is off and with 200 o
 curl -s 'http://localhost:23119/api/users/0/items?limit=1' -o /dev/null -w '%{http_code}\n'
 curl -s 'http://localhost:23119/api/users/0/items?q=co-design&qmode=everything&limit=10&format=json'
 curl -s 'http://localhost:23119/api/users/0/collections?limit=200'
-curl -s 'http://localhost:23119/api/users/0/items/ABCD2345/children'
-curl -s 'http://localhost:23119/api/users/0/items/EFGH6789/file/view/url'
+curl -s 'http://localhost:23119/api/users/0/items/<ITEMKEY>/children'
+curl -s 'http://localhost:23119/api/users/0/items/<ATTACHMENTKEY>/file/view/url'
 ```
 
 The last call returns the `file://` URL of an attachment.
