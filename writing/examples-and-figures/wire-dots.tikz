@@ -1,0 +1,23 @@
+% A box with two wires that end in a dot outside its left edge,
+% and two dashed wires that start with a dot outside its right edge.
+% The figure needs only the tikz package.
+\begin{tikzpicture}
+  % the box
+  \node[draw, minimum width=2.2cm, minimum height=1.4cm] (box) at (0,0) {};
+
+  % first wire into the left edge
+  \draw ([xshift=-1.2cm, yshift=3mm]box.west) -- ([xshift=-1.5pt, yshift=3mm]box.west);
+  \fill ([xshift=-1.5pt, yshift=3mm]box.west) circle (1.5pt);
+
+  % second wire into the left edge
+  \draw ([xshift=-1.2cm, yshift=-3mm]box.west) -- ([xshift=-1.5pt, yshift=-3mm]box.west);
+  \fill ([xshift=-1.5pt, yshift=-3mm]box.west) circle (1.5pt);
+
+  % first dashed wire out of the right edge
+  \fill ([xshift=1.5pt, yshift=3mm]box.east) circle (1.5pt);
+  \draw[dashed] ([xshift=1.5pt, yshift=3mm]box.east) -- ([xshift=1.2cm, yshift=3mm]box.east);
+
+  % second dashed wire out of the right edge
+  \fill ([xshift=1.5pt, yshift=-3mm]box.east) circle (1.5pt);
+  \draw[dashed] ([xshift=1.5pt, yshift=-3mm]box.east) -- ([xshift=1.2cm, yshift=-3mm]box.east);
+\end{tikzpicture}
